@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:poppins, sans-serif;
+}
+
+body{
+  background:#000;
+  overflow:hidden;
+}
+
+/* REEL CONTAINER */
+.reel-container{
+  height:100vh;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+}
+
+/* SINGLE REEL */
+.reel{
+  position:relative;
+  height:100vh;
+  scroll-snap-align:start;
+}
+
+.reel video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ICON BAR */
+.icons{
+  position:absolute;
+  right:10px;
+  bottom:100px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  color:#fff;
+  font-size:14px;
+  text-align:center;
+}
+
+.icons div{
+  cursor:pointer;
+}
+
+/* USER TEXT */
+.caption{
+  position:absolute;
+  bottom:40px;
+  left:10px;
+  color:#fff;
+}
+
+.caption h4{
+  font-size:14px;
+}
+
+.caption p{
+  font-size:12px;
+  opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="reel-container">
+
+  <div class="reel">
+    <video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay muted loop></video>
+    <div class="icons">
+      <div>❤️<br>8.7K</div>
+      <div>💬<br>253</div>
+      <div>📤<br>3.1K</div>
+    </div>
+    <div class="caption">
+      <h4>@happyride</h4>
+      <p>Ride with comfort 🚗✨</p>
+    </div>
+  </div>
+
+  <div class="reel">
+    <video src="https://www.w3schools.com/html/movie.mp4" autoplay muted loop></video>
+    <div class="icons">
+      <div>❤️<br>4.2K</div>
+      <div>💬<br>187</div>
+      <div>📤<br>1.9K</div>
+    </div>
+    <div class="caption">
+      <h4>@happymarket</h4>
+      <p>Shopping made easy 🛒</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const videos = document.querySelectorAll("video");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.play();
+    }else{
+      entry.target.pause();
+    }
+  });
+},{threshold:0.8});
+
+videos.forEach(video=>{
+  observer.observe(video);
+});
+</script>
+
+</body>
+</html>￼Enter
